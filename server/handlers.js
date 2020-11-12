@@ -37,8 +37,14 @@ var optThree = function (server, msg) {
     server.send(buf, 0, buf.length, msg.info.port, msg.info.address)
 }
 
+var optUnknown = function(server, msg){
+    var buf = new Buffer("data=" + "Comando não reconhecido", 'utf-8')
+    server.send(buf, 0, buf.length, msg.info.port, msg.info.address)
+}
+
 module.exports = { 
     optionOne: optOne,
     optionTwo: optTwo,
-    optionThree: optThree
+    optionThree: optThree,
+    unknown: optUnknown
 }

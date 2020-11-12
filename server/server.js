@@ -27,7 +27,7 @@ server.on("message", function(buffer, rinfo){
             handlers.optionThree(server, msg)
             break;
         default:
-            server.send("data=" + "Comando não reconhecido", rinfo.port, rinfo.address)
+            handlers.unknown(server, msg)
             break;
     }
 })
