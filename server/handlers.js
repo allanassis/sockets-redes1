@@ -32,7 +32,7 @@ var optTwo = function (server, msg) {
 
 var optThree = function (server, msg) {
     const sentence = msg.data.toString()
-    const invertedSentence = sentence.split(').reverse().join(')
+    const invertedSentence = sentence.split('').reverse().join('')
     var buf = new Buffer('data=' + invertedSentence, 'utf-8')
     server.send(buf, 0, buf.length, msg.info.port, msg.info.address)
 }
@@ -52,5 +52,5 @@ module.exports = {
     optionTwo: optTwo,
     optionThree: optThree,
     unknown: optUnknown,
-    badData, badData
+    badData: badData
 }
