@@ -30,4 +30,15 @@ var optTwo = function (server, msg) {
     }
 }
 
-module.exports = { optionOne: optOne, optionTwo: optTwo }
+var optThree = function (server, msg) {
+    const sentence = msg.data.toString()
+    const invertedSentence = sentence.split("").reverse().join("")
+    var buf = new Buffer("data=" + invertedSentence, 'utf-8')
+    server.send(buf, 0, buf.length, msg.info.port, msg.info.address)
+}
+
+module.exports = { 
+    optionOne: optOne,
+    optionTwo: optTwo,
+    optionThree: optThree
+}

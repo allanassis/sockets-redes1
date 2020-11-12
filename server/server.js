@@ -24,9 +24,8 @@ server.on("message", function(buffer, rinfo){
             handlers.optionTwo(server, msg)
             break;
         case "3":
-            const sentence = dataList[1].toString()
-            const invertedSentence = sentence.split("").reverse().join("")
-            server.send("data=" + invertedSentence, rinfo.port, rinfo.address)
+            handlers.optionThree(server, msg)
+            break;
         default:
             server.send("data=" + "Comando não reconhecido", rinfo.port, rinfo.address)
             break;
