@@ -1,7 +1,7 @@
-const net = require("net")
 var dgram = require("dgram");
 
 var server = dgram.createSocket("udp4");
+var handlers = require("./handlers")
 
 const PORT = "3000"
 
@@ -14,16 +14,10 @@ server.on("message", function(buffer, rinfo){
     const data = buffer.toString()
     const dataList = data.split("=")
     const option = dataList[0]
+    const msg = {data: dataList[1], info: rinfo}
     switch (option) {
         case "1":
-
-            const number = +dataList[1]
-            if (Number.isNaN(number)) {
-                server.send("error=Na opção 1 é necessário enviar um inteiro na msg", rinfo.port, rinfo.address)
-            }
-            else {
-                server.send("data=" + (number + 1), rinfo.port, rinfo.address)
-            }
+            handlers.optionOne(server, msg)
             break;
         case "2":
             var char = dataList[1].toString()
@@ -46,11 +40,13 @@ server.on("message", function(buffer, rinfo){
             const invertedSentence = sentence.split("").reverse().join("")
             server.send("data=" + invertedSentence, rinfo.port, rinfo.address)
         default:
+            server.send("data=" + "Comando não reconhecido", rinfo.port, rinfo.address)
             break;
     }
 })
 
 server.on("error", function(err) {
+    console.log("deu ruim")
     console.error("Erro name: ", err.name)
     console.error("Error message: ", err.message)
     console.error("Error stack trace: ", err.stack)
