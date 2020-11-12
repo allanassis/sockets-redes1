@@ -1,18 +1,18 @@
-var dgram = require("dgram");
+var dgram = require('dgram');
 
-var server = dgram.createSocket("udp4");
-var handlers = require("./handlers")
+var server = dgram.createSocket('udp4');
+var handlers = require('./handlers')
 
-const PORT = "3000"
+const PORT = '3000'
 
-server.on("connect", function () {
-    console.log("Endereço do cliente: " + connection.remoteAddress + ":" + connection.remotePort)
+server.on('connect', function () {
+    console.log('Endereço do cliente: ' + connection.remoteAddress + ':' + connection.remotePort)
 })
 
 
-server.on("message", function (buffer, rinfo) {
+server.on('message', function (buffer, rinfo) {
     const data = buffer.toString()
-    const dataList = data.split("=")
+    const dataList = data.split('=')
 
     if (dataList.length !== 2) {
         handlers.badData(server, { infor: rinfo })
@@ -24,13 +24,13 @@ server.on("message", function (buffer, rinfo) {
         const msg = { data: dataList[1], info: rinfo }
 
         switch (option) {
-            case "1":
+            case '1':
                 handlers.optionOne(server, msg)
                 break;
-            case "2":
+            case '2':
                 handlers.optionTwo(server, msg)
                 break;
-            case "3":
+            case '3':
                 handlers.optionThree(server, msg)
                 break;
             default:
@@ -40,21 +40,20 @@ server.on("message", function (buffer, rinfo) {
     }
 })
 
-server.on("error", function (err) {
-    console.log("deu ruim")
-    console.error("Erro name: ", err.name)
-    console.error("Error message: ", err.message)
-    console.error("Error stack trace: ", err.stack)
+server.on('error', function (err) {
+    console.error('Erro name: ', err.name)
+    console.error('Error message: ', err.message)
+    console.error('Error stack trace: ', err.stack)
 })
 
-server.on("close", function () {
-    console.log("Bye Bye! :D")
+server.on('close', function () {
+    console.log('Bye Bye! :D')
 })
 
-server.on("listening", function () {
+server.on('listening', function () {
     var address = server.address();
-    console.log("server listening " +
-        address.address + ":" + address.port);
+    console.log('Servidor ouvindo no endereço: ' +
+        address.address + ':' + address.port);
 })
 
 server.bind(PORT)
