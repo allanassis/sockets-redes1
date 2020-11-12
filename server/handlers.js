@@ -42,9 +42,15 @@ var optUnknown = function(server, msg){
     server.send(buf, 0, buf.length, msg.info.port, msg.info.address)
 }
 
+var badData = function(server, msg){
+    var buf = new Buffer("error=" + "Formato de dado desconhecido, enviar dados no formato => opcao=data", 'utf-8')
+    server.send(buf, 0, buf.length, msg.info.port, msg.info.address)
+}
+
 module.exports = { 
     optionOne: optOne,
     optionTwo: optTwo,
     optionThree: optThree,
-    unknown: optUnknown
+    unknown: optUnknown,
+    badData, badData
 }

@@ -13,22 +13,30 @@ server.on("connect", function(){
 server.on("message", function(buffer, rinfo){
     const data = buffer.toString()
     const dataList = data.split("=")
-    const option = dataList[0]
-    const msg = {data: dataList[1], info: rinfo}
 
-    switch (option) {
-        case "1":
-            handlers.optionOne(server, msg)
-            break;
-        case "2":
-            handlers.optionTwo(server, msg)
-            break;
-        case "3":
-            handlers.optionThree(server, msg)
-            break;
-        default:
-            handlers.unknown(server, msg)
-            break;
+    if(dataList.length !== 2){
+        handlers.badData(server, {infor: rinfo})
+    }
+
+    else if(dataList.length === 2) {
+        
+        const option = dataList[0]
+        const msg = {data: dataList[1], info: rinfo}
+    
+        switch (option) {
+            case "1":
+                handlers.optionOne(server, msg)
+                break;
+            case "2":
+                handlers.optionTwo(server, msg)
+                break;
+            case "3":
+                handlers.optionThree(server, msg)
+                break;
+            default:
+                handlers.unknown(server, msg)
+                break;
+        }
     }
 })
 
