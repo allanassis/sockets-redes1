@@ -15,25 +15,13 @@ server.on("message", function(buffer, rinfo){
     const dataList = data.split("=")
     const option = dataList[0]
     const msg = {data: dataList[1], info: rinfo}
+
     switch (option) {
         case "1":
             handlers.optionOne(server, msg)
             break;
         case "2":
-            var char = dataList[1].toString()
-            if (char.length !== 1) {
-                server.send("error=Na opção 2 é necessário enviar apenar um caracter",rinfo.port, rinfo.address)
-            }
-            else {
-                var asciiNumber = char.charCodeAt()
-
-                if (asciiNumber === char.toLowerCase().charCodeAt()) {
-                    server.send("data=" + char.toUpperCase(), rinfo.port, rinfo.address)
-                }
-                else {
-                    server.send("data=" + char.toLowerCase(), rinfo.port, rinfo.address)
-                }
-            }
+            handlers.optionTwo(server, msg)
             break;
         case "3":
             const sentence = dataList[1].toString()
