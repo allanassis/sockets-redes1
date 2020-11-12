@@ -50,6 +50,16 @@ server.on("message", function(buffer, rinfo){
     }
 })
 
+server.on("error", function(err) {
+    console.error("Erro name: ", err.name)
+    console.error("Error message: ", err.message)
+    console.error("Error stack trace: ", err.stack)
+})
+
+server.on("close", function(){
+    console.log("Bye Bye! :D")
+})
+
 server.on("listening", function(){
     var address = server.address();
     console.log("server listening " +
