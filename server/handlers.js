@@ -10,5 +10,4 @@ var optOne = function (server, msg) {
         server.send(buf, 0, buf.length, msg.info.port, msg.info.address)
     }
 }
-var two = 
 module.exports = { optionOne: optOne }
