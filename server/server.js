@@ -14,7 +14,6 @@ server.on("message", function(buffer, rinfo){
     const data = buffer.toString()
     const dataList = data.split("=")
     const option = dataList[0]
-    console.log(data)
     switch (option) {
         case "1":
 
@@ -41,6 +40,7 @@ server.on("message", function(buffer, rinfo){
                     server.send("data=" + char.toLowerCase(), rinfo.port, rinfo.address)
                 }
             }
+            break;
         case "3":
             const sentence = dataList[1].toString()
             const invertedSentence = sentence.split("").reverse().join("")
