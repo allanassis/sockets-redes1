@@ -14,7 +14,7 @@ var optOne = function (server, msg) {
 var optTwo = function (server, msg) {
     var char = msg.data.toString()
     if (char.length !== 1) {
-        var buf = new Buffer('error=Na opção 2 é necessário enviar apenar um caracter', 'utf-8');
+        var buf = new Buffer('error=Na opção 2 é necessário enviar apenas um caracter', 'utf-8');
         server.send(buf, 0, buf.length, msg.info.port, msg.info.address)
     }
     else {
