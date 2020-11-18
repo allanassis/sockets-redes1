@@ -13,6 +13,8 @@ Foi criado um protocolo simples para realizar esse trabalho
 
 Os dados enviados para o servidor são no formato `{opção}=msg`
 
+Onde `{opção}` pode assumir os valores de 1, 2 ou 3.
+
 Primeiro vem a opção que será executada e depois o dado que será processado
 
 Os dados recebedos do servidor estão no formato `data=msg` ou `error=msg` se houver algum erro.
@@ -20,4 +22,4 @@ Os dados recebedos do servidor estão no formato `data=msg` ou `error=msg` se ho
 ## Requisitos
 
 nodejs >= 0.10
-python >=3.7
+python >=3.4
