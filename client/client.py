@@ -1,4 +1,5 @@
 import socket
+import datetime
 
 HOST = '127.0.0.1'     
 PORT = 3000       
@@ -59,12 +60,16 @@ while opt != '0':
     resp = None
 
     data = input("Digite o dado a ser enviado de acordo com a opção: ")
-    msg = opt + "=" + data
-
-    udp_server.sendto(bytes(msg, 'utf-8'), DEST)
+    msg = f"{opt}={data}"
 
     try:
+        start_time = datetime.datetime.now()
+
+        udp_server.sendto(bytes(msg, 'utf-8'), DEST)
         resp = udp_server.recv(1024)
+
+        end_time = datetime.datetime.now()
+
         decoded_resp = resp.decode("utf-8").split("=")
 
         if decoded_resp[0] == "error":
@@ -74,6 +79,10 @@ while opt != '0':
 
     except Exception as e:
         log_error(str(e))
+        
+    finally:
+        rtt = end_time - start_time
+        print(f"Round Trip Time: {rtt.microseconds / 1000} ms\n")
 
     opt = input("Digite a opção desejada: ")
 
