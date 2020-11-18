@@ -51,7 +51,7 @@ print('''
 
 def log_error(msg):
   print("\nOcorreu um erro!!!")
-  print(f"Erro: " + msg + "\n")
+  print("Erro: " + msg + "\n")
 
 opt = input("Digite a opção desejada: ")
 
@@ -75,7 +75,7 @@ while opt != '0':
         if decoded_resp[0] == "error":
             log_error(decoded_resp[1])
         else:
-            print(f"\nA resposta é: " + decoded_resp[1] + "\n")
+            print("\nA resposta é: " + decoded_resp[1] + "\n")
 
     except Exception as e:
         log_error(str(e))
@@ -83,7 +83,7 @@ while opt != '0':
     finally:
         rtt = end_time - start_time
         rtt_ms = rtt.microseconds / 1000
-        print(f"Round Trip Time: " + str(rtt_ms) + " ms\n")
+        print("Round Trip Time: " + str(rtt_ms) + " ms\n")
 
     opt = input("Digite a opção desejada: ")
 
