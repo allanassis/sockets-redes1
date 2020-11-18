@@ -48,6 +48,10 @@ print('''
 
 ''')
 
+def log_error(msg):
+  print("\nOcorreu um erro!!!")
+  print(f"Erro: {msg}\n")
+
 opt = input("Digite a opção desejada: ")
 
 
@@ -64,15 +68,12 @@ while opt != '0':
         decoded_resp = resp.decode("utf-8").split("=")
 
         if decoded_resp[0] == "error":
-            print("\nOcorreu um erro!!!")
-            print(f"Erro: {decoded_resp[1]}\n")
+            log_error(decoded_resp[1])
         else:
             print(f"\nA resposta é: {decoded_resp[1]}\n")
 
     except Exception as e:
-        print("\nOcorreu um erro!!!")
-        print(f"Erro: {str(e)}\n")
-
+        log_error(str(e))
 
     opt = input("Digite a opção desejada: ")
 
