@@ -5,11 +5,6 @@ var handlers = require('./handlers')
 
 const PORT = '3000'
 
-server.on('connect', function () {
-    console.log('Endereço do cliente: ' + connection.remoteAddress + ':' + connection.remotePort)
-})
-
-
 server.on('message', function (buffer, rinfo) {
     const data = buffer.toString()
     const dataList = data.split('=')
