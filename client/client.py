@@ -53,13 +53,14 @@ def log_error(msg):
   print("\nOcorreu um erro!!!")
   print("Erro: " + msg + "\n")
 
-opt = input("Digite a opção desejada: ")
+opt = str(input("Digite a opção desejada: "))
 
 
 while opt != '0':
     resp = None
+    end_time = None
 
-    data = input("Digite o dado a ser enviado de acordo com a opção: ")
+    data = str(input("Digite o dado a ser enviado de acordo com a opção: "))
     msg = opt+ "=" +data
 
     try:
@@ -85,5 +86,5 @@ while opt != '0':
         rtt_ms = rtt.microseconds / 1000
         print("Round Trip Time: " + str(rtt_ms) + " ms\n")
 
-    opt = input("Digite a opção desejada: ")
+    opt = str(input("Digite a opção desejada: "))
 
