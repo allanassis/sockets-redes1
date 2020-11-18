@@ -79,12 +79,13 @@ while opt != '0':
             print("\nA resposta é: " + decoded_resp[1] + "\n")
 
     except Exception as e:
+        end_time = datetime.datetime.now()
         log_error(str(e))
         
     finally:
         rtt = end_time - start_time
         rtt_ms = rtt.microseconds / 1000
         print("Round Trip Time: " + str(rtt_ms) + " ms\n")
-
+    print("==========================//==============================\n\n")
     opt = str(input("Digite a opção desejada: "))
 
