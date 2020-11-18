@@ -39,7 +39,7 @@ var optThree = function (server, msg) {
 }
 
 var optUnknown = function (server, msg) {
-    var buf = new Buffer('data=' + 'Comando não reconhecido', 'utf-8')
+    var buf = new Buffer('error=' + 'Comando não reconhecido', 'utf-8')
     server.send(buf, 0, buf.length, msg.info.port, msg.info.address)
 }
 
