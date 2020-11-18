@@ -7,6 +7,15 @@ Se o servidor receber um inteiro, deve incrementar esse inteiro e retornar
 Se o servidor receber um caracter, deve inverte a caixa desse caracter e retorna-lo
 Se o servidor receber uma string, deve inverte a mesma e retorna-la
 
+# Rodando
+
+Simplementes entrar na pasta server e rodar `node server.js`
+
+Irá aparecer uma mensagem informando que o servidor está rodando
+
+Após o servidor rodando abrir outra sessão de terminal e ir na pasta client e rodar o comando `python client.py`
+
+
 ## Protocolo
 
 Foi criado um protocolo simples para realizar esse trabalho
