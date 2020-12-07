@@ -3,7 +3,7 @@ var dgram = require('dgram');
 var server = dgram.createSocket('udp4');
 var handlers = require('./handlers')
 
-const PORT = '3000'
+const PORT = '9902'
 
 server.on('message', function (buffer, rinfo) {
     const data = buffer.toString()
