@@ -2,11 +2,11 @@ import socket
 import datetime
 import sys
 
-params = sys.argv[:1]
+params = sys.argv[1:]
 
 HOST = params[0]
 PORT = params[1]     
-  
+
 TIMEOUT = 1
 DEST = (HOST, PORT)
 
