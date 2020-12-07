@@ -1,8 +1,12 @@
 import socket
 import datetime
+import sys
 
-HOST = '127.0.0.1'     
-PORT = 3000       
+params = sys.argv[:1]
+
+HOST = params[0]
+PORT = params[1]     
+  
 TIMEOUT = 1
 DEST = (HOST, PORT)
 
